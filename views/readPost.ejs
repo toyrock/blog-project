@@ -1,0 +1,7 @@
+<h2><%= post.title %></h2>
+<a href="/">all posts</a>
+<a href="/posts/update/<%= post.id %>">update</a>
+<small>created at <%= post.createdAt.toLocaleDateString() %> </small>
+<small>updated at<%= post.updatedAt.toLocaleDateString() %> </small>
+<hr />
+<p><%= post.markdown %></p>

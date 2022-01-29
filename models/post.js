@@ -20,8 +20,9 @@ const postSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+    immutable: true,
   },
-  editedAt: {
+  updatedAt: {
     type: Date,
     default: Date.now,
   },

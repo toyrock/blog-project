@@ -37,16 +37,31 @@ router.post(
   savePostAndRedirect('createPost')
 )
 
+// route for handling the deletion of a post
+router.delete('/:id', async (req, res) => {
+  await Post.findByIdAndDelete(req.params.id)
+  res.redirect('/')
+})
+
+// route for handling the read of a post
+router.get('/:id', async (req, res) => {
+  const post = await Post.findById(req.params.id)
+  res.render('readPost', { post })
+})
+
+// middleware for saving the post and redirecting to the correct page
 function savePostAndRedirect(template) {
   return async (req, res) => {
-    console.log(req.post)
+    // update the post with new data
     req.post.title = req.body.title
     req.post.description = req.body.description
     req.post.markdown = req.body.markdown
     try {
+      // try saving the post to mongodb
       await req.post.save()
       res.redirect('/')
     } catch (error) {
+      // if something goes wrong, redirect to the same form (updatePost or createPost)
       res.render(template, { post: req.post })
     }
   }

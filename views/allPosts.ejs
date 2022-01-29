@@ -8,6 +8,7 @@
   <small><%= post.createdAt.toLocaleDateString() %> </small>
   <p><%= post.description %></p>
   <a href="/posts/update/<%= post.id %>">update</a>
+  <a href="/posts/<%= post.id %>">read</a>
   <form action="/posts/<%= post.id %>?_method=DELETE" method="post">
     <button type="submit">delete</button>
   </form>
