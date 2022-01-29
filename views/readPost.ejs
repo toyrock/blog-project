@@ -4,4 +4,4 @@
 <small>created at <%= post.createdAt.toLocaleDateString() %> </small>
 <small>updated at<%= post.updatedAt.toLocaleDateString() %> </small>
 <hr />
-<p><%= post.markdown %></p>
+<div><%- post.sanitizedHtml %></div>
