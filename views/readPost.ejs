@@ -2,6 +2,23 @@
 <a href="/">all posts</a>
 <a href="/posts/update/<%= post.id %>">update</a>
 <small>created at <%= post.createdAt.toLocaleDateString() %> </small>
-<small>updated at<%= post.updatedAt.toLocaleDateString() %> </small>
+<small>updated at <%= post.updatedAt.toLocaleDateString() %> </small>
 <hr />
+<!-- display the sinitized html -->
 <div><%- post.sanitizedHtml %></div>
+<!-- display the form to add comments -->
+<form action="/comments/<%= post.id %>" method="post">
+  <input type="text" name="comment" />
+  <button type="submit">submit</button>
+</form>
+<!-- display the comments -->
+<ul>
+  <!-- loop through the comments with a forEach loop -->
+  <% post.comments.forEach((comment) => { %>
+  <li>
+    <small><%= comment.createdAt.toLocaleDateString() %> </small>
+    <small><%= comment.createdAt.toLocaleTimeString() %> </small>
+    <%= comment.content %>
+  </li>
+  <% }) %>
+</ul>

@@ -1,5 +1,4 @@
 const express = require('express')
-const { append, send } = require('express/lib/response')
 const Post = require('./../models/post')
 
 // new router for the post feature
@@ -45,7 +44,7 @@ router.delete('/:id', async (req, res) => {
 
 // route for handling the read of a post
 router.get('/:id', async (req, res) => {
-  const post = await Post.findById(req.params.id)
+  const post = await Post.findById(req.params.id).populate('comments')
   res.render('readPost', { post })
 })
 

@@ -10,3 +10,4 @@
 - create your model in the `models` foder
 - create `layout.hbs` in the `views` folder
 - create routes file inside `routes`
+- npm i bcrypt
